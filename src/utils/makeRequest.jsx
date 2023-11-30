@@ -7,8 +7,8 @@ const makeRequest = async (url, method, data) => {
             method,
             data,
         });
-
         return response.data;
+        
     } catch (error) {
         throw error;
     }
