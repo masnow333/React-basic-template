@@ -5,7 +5,7 @@ import makeRequest from '../utils/makeRequest';
 import { useErrorBoundary } from 'react-error-boundary';
 import { useDispatch } from 'react-redux';
 import { changeLoading } from '../redux/slices/loadingSlice';
-import { wait } from '@testing-library/user-event/dist/utils';
+import sleep from '../utils/sleep';
 
 const LoginRegisterView = () => {
 	const { showBoundary } = useErrorBoundary();
@@ -16,10 +16,6 @@ const LoginRegisterView = () => {
 	const [lastName, setLastName] = useState('asd');
 	const [email, setEmail] = useState('asd@asd.asd');
 	const [password, setPassword] = useState('1234');
-
-	function sleep(ms) {
-		return new Promise(resolve => setTimeout(resolve, ms));
-	}
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
@@ -36,7 +32,6 @@ const LoginRegisterView = () => {
 				'post',
 				dataToSend
 			);
-			await sleep(10000)
 			if (data.error !== null) {
 				throw new Error(data.message);
 			}
