@@ -1,0 +1,4 @@
+type LoadingModel = {
+    isLoading: boolean;
+  };
+  

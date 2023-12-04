@@ -7,6 +7,7 @@ import Menu from './components/Menu';
 import { ErrorBoundary } from 'react-error-boundary';
 import Fallback from './utils/fallBackError';
 import Loading from './utils/loading';
+import React from 'react';
 
 function App() {
 	const listRoutes = routes.map((route) => (

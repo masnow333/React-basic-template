@@ -14,10 +14,11 @@ const LoginRegisterView = () => {
 	const [isLogin, setIsLogin] = useState(true);
 	const [name, setName] = useState('asd');
 	const [lastName, setLastName] = useState('asd');
+	const [userName, setUserName] = useState('asd');
 	const [email, setEmail] = useState('asd@asd.asd');
 	const [password, setPassword] = useState('1234');
 
-	const handleSubmit = async (event) => {
+	const handleSubmit = async (event: React.SyntheticEvent) => {
 		event.preventDefault();
 		dispatch(changeLoading(true));
 		try {
@@ -27,6 +28,8 @@ const LoginRegisterView = () => {
 				name: name,
 				lastName: lastName,
 			};
+			debugger;
+			await sleep(5000);
 			const data = await makeRequest(
 				'http://localhost:8000/register',
 				'post',
@@ -36,13 +39,10 @@ const LoginRegisterView = () => {
 				throw new Error(data.message);
 			}
 			console.log(data);
-			
 		} catch (error) {
-			debugger;
 			showBoundary(error);
 		}
 		dispatch(changeLoading(false));
-		
 	};
 
 	return (
@@ -50,7 +50,15 @@ const LoginRegisterView = () => {
 			<h1>{isLogin ? 'Login' : 'Register'}</h1>
 			<form onSubmit={handleSubmit}>
 				<input
-					type='name'
+					type='text'
+					placeholder='userName'
+					value={userName}
+					onChange={(event) => setUserName(event.target.value)}
+					hidden={isLogin}
+				/>
+
+				<input
+					type='text'
 					placeholder='name'
 					value={name}
 					onChange={(event) => setName(event.target.value)}
@@ -58,7 +66,7 @@ const LoginRegisterView = () => {
 				/>
 
 				<input
-					type='lastName'
+					type='text'
 					placeholder='lastName'
 					value={lastName}
 					onChange={(event) => setLastName(event.target.value)}

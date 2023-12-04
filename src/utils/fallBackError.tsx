@@ -1,9 +1,11 @@
 'use client';
 
+import React from 'react';
 import { useEffect, useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
+import { FallbackProps } from 'react-error-boundary';
 
-function Fallback({ error, resetErrorBoundary }) {
+function Fallback({ error, resetErrorBoundary }: FallbackProps) {
 
 	const [lgShow, setLgShow] = useState(false);
 
