@@ -3,8 +3,12 @@ import { useSelector } from 'react-redux';
 import Spinner from 'react-bootstrap/Spinner';
 import Modal from 'react-bootstrap/Modal';
 
-const Loading = ({ children }) => {
-	const loading = useSelector((state) => state.loading);
+interface LayoutProps {
+	children: React.ReactNode;
+}
+
+const Loading = ({ children }: LayoutProps) => {
+	const loading: LoadingModel = useSelector((state: any) => state.loading);
 
 	return (
 		<>
@@ -19,8 +23,8 @@ const Loading = ({ children }) => {
 						centered
 					>
 						<Modal.Body>
-							<div class='d-flex justify-content-center'>
-								<Spinner animation='border' role='status' size='lg'>
+							<div className='d-flex justify-content-center'>
+								<Spinner animation='border' role='status'>
 									<span className='visually-hidden'>Loading...</span>
 								</Spinner>
 							</div>

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const makeRequest = async (url, method, data) => {
+const makeRequest = async (url: string, method: string, data: any) => {
     try {
         const response = await axios({
             url,
