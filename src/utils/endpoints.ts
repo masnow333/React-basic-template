@@ -1,14 +1,15 @@
-enum endpoints {
-	Register = "register"
+export enum Endpoints {
+	Register = "register",
+	Login = "login"
   }
 
-enum methods {
+export enum Methods {
 	POST = "post"
 }
 
-const makeEndpoint = (endpointValue:endpoints) => {
-    return process.env.REACT_APP_PROTOCOL ?? "http://" + process.env.REACT_APP_API + endpointValue
+const makeEndpoint = (endpointValue:Endpoints) => {
+	console.log(`${process.env.REACT_APP_PROTOCOL}${process.env.REACT_APP_API}${endpointValue}`)
+    return `${process.env.REACT_APP_PROTOCOL}${process.env.REACT_APP_API}${endpointValue}`
 }
 
 export default makeEndpoint
-// export const { Endpoints, Methods } = [endpoints, methods]
